@@ -95,7 +95,7 @@ def run():
                     snake = Snake(cells_num=CELLS_NUM, grid_size=GRID_SIZE)
                     PAUSED = False
                     DIRECTION = RIGHT
-                    FPS = 15
+                    FPS = 10
                 if event.key == K_p:
                     PAUSED = True if not PAUSED else False                
                 if event.key == K_UP:
