@@ -15,7 +15,7 @@ def run():
     WIDTH = 800
     HEIGHT= 600
     FPS = 10
-    GRID_SIZE = 30
+    GRID_SIZE = 25
     PAUSED = True
     CELLS_NUM = 4
     GAME_OVER = False
@@ -41,10 +41,10 @@ def run():
     
     clock = pygame.time.Clock()
 
-    score_font = pygame.font.SysFont("retro_computer", 16)
-    messages_font = pygame.font.SysFont("retro_computer", 18)
-    game_over_font = pygame.font.SysFont("retro_computer", 78)
-    game_title_font = pygame.font.SysFont("retro_computer", 72)
+    score_font = pygame.font.Font("./assets/fonts/retro_computer.ttf", 16)
+    messages_font = pygame.font.Font("./assets/fonts/retro_computer.ttf", 18)
+    game_over_font = pygame.font.Font("./assets/fonts/retro_computer.ttf", 78)
+    game_title_font = pygame.font.Font("./assets/fonts/retro_computer.ttf", 72)
     
     snake = Snake(cells_num=CELLS_NUM, grid_size=GRID_SIZE)
     apple = Apple(grid_size=GRID_SIZE).new_position()
