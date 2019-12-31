@@ -33,6 +33,8 @@ def run():
     ]
 
     pygame.init()
+    pygame.mixer.init()
+
     display = pygame.display.set_mode((WIDTH, HEIGHT), NOFRAME)
     pygame.display.set_caption('Snake')
     
@@ -45,6 +47,9 @@ def run():
     messages_font = pygame.font.Font("./assets/fonts/retro_computer.ttf", 18)
     game_over_font = pygame.font.Font("./assets/fonts/retro_computer.ttf", 78)
     game_title_font = pygame.font.Font("./assets/fonts/retro_computer.ttf", 72)
+    
+    game_over_audio_file = 'assets/game_over.wav'
+    game_over_audio = pygame.mixer.Sound(game_over_audio_file)
     
     snake = Snake(cells_num=CELLS_NUM, grid_size=GRID_SIZE)
     apple = Apple(grid_size=GRID_SIZE).new_position()
@@ -77,6 +82,8 @@ def run():
             if not snake.override_edges() and not snake.self_collide():
                 snake.move(DIRECTION)
             else:
+                FPS = 2000
+                pygame.mixer.Sound.play(game_over_audio)
                 game_over()
                 draw_messages(messages)
         else:
@@ -92,6 +99,7 @@ def run():
                 if event.key == K_ESCAPE:
                     pygame.quit()
                 if event.key == K_r:
+                    pygame.mixer.Sound.stop(game_over_audio)
                     snake = Snake(cells_num=CELLS_NUM, grid_size=GRID_SIZE)
                     PAUSED = False
                     DIRECTION = RIGHT
